@@ -18,7 +18,7 @@ function getAchives(){
     t = ``;
     $.ajax({
         type:"GET",
-        url:"https://tnxg.yunyoult.cn/index.php?rest_route=/wp/v2/posts/",
+        url:"https://blog.tnxg.loyunet.cn/index.php?rest_route=/wp/v2/posts/",
         dataType:"json",
         success:function(json){
             for(var i = 0;i < json.length;i++){
@@ -36,7 +36,6 @@ function gethitokoto(){
     $.ajax({
         type:"POST",
         url:"https://api.fczbl.vip/hitokoto/?encode=json",
-        dataType:"json",
         success:function(result){
             write(result.hitokoto);
         },
@@ -53,28 +52,6 @@ function write(text){
         gethitokoto();
     }
 }
-
-$(function(){
-    $.ajax({
-        url:"https://api.fczbl.vip/163_sp/?type=playlist&id=2003373695",
-        success:function(e){
-            var a = new APlayer({
-                element:document.getElementById("ap-f"),
-                autoplay:false,
-                fixed:true,
-                loop:"all",
-                order:"list",
-                listFolded:true,
-                showlrc:3,
-                theme:"#e6d0b2",
-                listmaxheight:"200px",
-                music:eval(e)
-            });
-            window.aplayers || (window.aplayers = []),
-            window.aplayers.push(a)
-        }
-    })
-})
 
 // 对Date的扩展，将 Date 转化为指定格式的String
 // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符， 
